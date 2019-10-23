@@ -1,0 +1,204 @@
+* {
+    box-sizing: border-box;
+}
+
+body, p {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    cursor: pointer;
+    border: 0;
+    padding: 0;
+}
+
+.right-side-nav {
+    list-style: none;
+    font-size: 19px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+nav {
+    background-color: #ff7f00;
+}
+.main-nav {
+    color: white;
+    text-transform: capitalize;
+    max-width: 1156px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.nav-item {
+    padding: 6px 15px;
+}
+.nav-item:hover , .nav-item:active{
+    color: #040a2c;
+}
+.nav-item:last-child {
+    border-left: 1px solid #8a8a8a;
+    padding-right: 0;
+}
+.second-nav {
+    height: 85px;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+}
+.search-icon {
+    position: absolut;
+    width: 20px;
+    height: 20px;
+}
+
+
+.editor-container {
+    height: 600px;
+    background-color: #e3e3e3;
+    padding: 25px 0;
+    display: flex;
+    /* justify-content: space-between; */
+}
+.editor-options * {
+    font-size: 20px;
+    border-radius: 8px;
+    width: 373px;
+}
+.editor-options {
+    width: 550px;
+    height: 550px;
+    margin-right: 55px;
+    padding: 0 80px;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+.part1, .part2, .part3, .part4 {
+    text-align: center;
+}
+
+.part4 {
+    align-self: flex-end;
+}
+input {
+    cursor: text;
+    height: 60px;
+    width: 100%;
+}
+.font-input {
+    width: 218px;
+    height: 60px;
+}
+select {
+    height: 60px;
+}
+.icon-img {
+    background-color: #fff;
+    width: 39px;
+    height: 38px;
+}
+.icon-btn {
+    background-color: #fff;
+    width: 60px;
+    height: 60px;
+}
+.share-btn {
+    color: #fff;
+    background-color: #ff7f00;
+    height: 60px;
+    width: 120px;
+}
+.emojy-selector {
+    display: inline-block;
+    width: 373px;
+    height: 135px;
+}
+
+
+#canvas {
+    background-color: #fff;
+    margin-left: 55px;
+}
+.canvas-container {
+    
+    width: 90vw;
+    height: 70vh;
+}
+
+
+.imgs-container {
+    height: 932px;
+    background-color: #e3e3e3;
+}
+
+
+footer {
+    color: #fff;
+    background-color: #ff7f00;
+    height: 207px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+}
+
+small {
+    padding: 16px;;
+}
+
+
+
+
+
+
+
+
+/*-- helpers --*/
+.flex {
+    display: flex;
+}
+
+.flex-col {
+    flex-direction: column;
+}
+
+.flex-row {
+    flex-direction: row;
+}
+
+.flex-around {
+    justify-content: space-around;
+}
+.flex-between {
+    justify-content: space-between;
+}
+
+.flex-center {
+    align-items: center;
+}
+
+.flex-start {
+    align-items: start;
+}
+
+.flex-wrap {
+    flex-wrap: wrap;
+}
+
+.flex .full {
+    flex: 1;
+}
+
+
+
+

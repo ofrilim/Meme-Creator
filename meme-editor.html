@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Mene-Editor</title>
+</head>
+<body>
+    <nav>
+        <section class="main-nav">
+            <div class="logo">
+                <img src="Logo/layer-2.png" alt="Logo">
+            </div>
+            <div>
+                <ul class="right-side-nav">
+                    <li class="nav-item"><a href="#">gallery</a></li>
+                    <li class="nav-item"><a href="#">about</a></li>
+                </ul>
+            </div>
+        </section>
+    </nav>
+
+    <section class="editor-container">
+        <div class="canvas-container">
+            <canvas id="canvas" width="550" height="550"></canvas>
+        </div>
+        <div class="editor-options">
+            <div class="part1">
+                <p><input type="text" name="" id="" placeholder="   type text here"></p>
+                <p>
+                    <button class="icon-btn"><img class="icon-img" src="ICONS/up-and-down-opposite-double-arrows-side-by-side.png" alt=""></button>
+                    <button class="icon-btn"><img class="icon-img" src="ICONS/add.png" alt=""></button>
+                    <button class="icon-btn"><img class="icon-img" src="ICONS/trash.png" alt=""></button>
+                </p>
+            </div>
+            <div class="part2">
+                <p>
+                    <button class="icon-btn"><img class="icon-img" src="ICONS/increase font - icon.png"/></button>
+                    <button class="icon-btn"><img class="icon-img" src="ICONS/decrease font - icon.png"></button>
+                    <button class="icon-btn"><img class="icon-img" src="ICONS/align-to-left.png"/></button>
+                    <button class="icon-btn"><img class="icon-img" src="ICONS/center-text-alignment.png"/></button>
+                    <button class="icon-btn"><img class="icon-img" src="ICONS/align-to-right.png"/></button>
+                </p>
+                <p><select class="font-input" name="" id="">
+                    <option value="Impact">font1</option>
+                    <option value="circle">font2</option>
+                    <option value="squere">font3</option>
+                    </select>
+                    <button class="icon-btn"><img class="icon-img" src="ICONS/text stroke.png"/></button>
+                    <button class="icon-btn"><img class="icon-img" src="ICONS/paint-board-and-brush.png"/></button>
+                </p>
+            </div>
+            <div class="part3">
+                <p><select class="emojy-selector" name="" id="">
+                    <option value="">emojy1</option>
+                    <option value="">emojy2</option>
+                    <option value="">emojy3</option>
+                </select>
+                </p>
+            </div>
+            <div class="part4">
+                <p><button class="share-btn">Share</button></p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="logo">
+                <img src="Logo/layer-2.png" alt="Logo">
+        </div>
+        <small>all rights reserved 2019</small>
+
+    </footer>
+    
+    <script src="js/main.js"></script>
+</body>
+</html>
