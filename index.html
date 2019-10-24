@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="css/style.css">
     <title>Meme Creator</title>
 </head>
-<body>
+<body onload="init()">
     <nav>
         <section class="main-nav">
             <div class="logo">
@@ -16,30 +16,80 @@
             </div>
             <div>
                 <ul class="right-side-nav">
-                    <li class="nav-item"><a href="#">gallery</a></li>
-                    <li class="nav-item"><a href="#">about</a></li>
+                    <li class="nav-item"><a href="" onclick="onTogglePages()">gallery</a></li>
+                    <li class="nav-item"><a href="">about</a></li>
                 </ul>
             </div>
         </section>
     </nav>
-    <nav>
-        <section class="second-nav">
-            <div class="search-bar">
-                <input type="text" placeholder="Enter search keyword"><img class="search-icon" src="ICONS/search-icon.png" alt=""></div>
-            <div class="words"></div>
+    <div class="first-page" style="display: block;">
+        <nav>
+            <section class="second-nav">
+                <div class="search-bar">
+                    <input type="text" placeholder="Enter search keyword"><img class="search-icon" src="ICONS/search-icon.png" alt=""></div>
+                <div class="words"></div>
+            </section>
+        </nav>
+
+        <div class="imgs-container"></div>
+
+        <section class="info">
         </section>
-    </nav>
-    
-    <div class="imgs-container">
-        <a href="meme-editor.html"><img id="img-example" src="meme-imgs/003.jpg"/></a>
     </div>
 
-    <section class="info">
-
-    </section>
+    <div class="second-page" style="display: none;">
+        <section class="editor-container">
+            <div class="canvas-container">
+                <canvas id="canvas" width="550" height="550"></canvas>
+            </div>
+            <div class="editor-options">
+                <div class="part1">
+                    <p><input type="text" name="" id="user-text" placeholder="   type text here"></p>
+                    <p>
+                        <button class="icon-btn"><img class="icon-img" src="ICONS/up-and-down-opposite-double-arrows-side-by-side.png" alt=""></button>
+                        <button class="icon-btn"><img class="icon-img" src="ICONS/add.png" alt=""></button>
+                        <button class="icon-btn"><img class="icon-img" src="ICONS/trash.png" alt=""></button>
+                    </p>
+                </div>
+                <div class="part2">
+                    <p>
+                        <button class="icon-btn"><img class="icon-img" src="ICONS/increase font - icon.png"/></button>
+                        <button class="icon-btn"><img class="icon-img" src="ICONS/decrease font - icon.png"></button>
+                        <button class="icon-btn"><img class="icon-img" src="ICONS/align-to-left.png"/></button>
+                        <button class="icon-btn"><img class="icon-img" src="ICONS/center-text-alignment.png"/></button>
+                        <button class="icon-btn"><img class="icon-img" src="ICONS/align-to-right.png"/></button>
+                    </p>
+                    <p><select class="font-input" name="" id="">
+                        <option value="Impact">font1</option>
+                        <option value="circle">font2</option>
+                        <option value="squere">font3</option>
+                        </select>
+                        <button class="icon-btn"><img class="icon-img" src="ICONS/text stroke.png"/></button>
+                        <button class="icon-btn"><input type="color" name="user-color" id="user-color" onchange="onGetColor()"><label for="user-color">
+                            <img class="icon-img" src="ICONS/paint-board-and-brush.png"/></label></button>
+                    </p>
+                </div>
+                <div class="part3">
+                    <p><select class="emojy-selector" name="" id="">
+                        <option value="">emojy1</option>
+                        <option value="">emojy2</option>
+                        <option value="">emojy3</option>
+                    </select>
+                    </p>
+                </div>
+                <div class="part4">
+                    <p><button class="share-btn">Share</button></p>
+                </div>
+            </div>
+        </section>
+    </div>
+    
     <footer>
-
-    </footer>
+        <div class="logo">
+                <img src="Logo/layer-2.png" alt="Logo">
+        </div>
+        <small>all rights reserved 2019</small>
+    </footer>    
 
     <script src="js/meme-service.js"></script>
     <script src="js/main.js"></script>

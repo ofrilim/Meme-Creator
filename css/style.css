@@ -16,6 +16,7 @@ button {
     cursor: pointer;
     border: 0;
     padding: 0;
+    height: 60px;
 }
 
 .right-side-nav {
@@ -24,7 +25,6 @@ button {
     display: flex;
     justify-content: space-evenly;
 }
-
 nav {
     background-color: #ff7f00;
 }
@@ -59,7 +59,6 @@ nav {
     height: 20px;
 }
 
-
 .editor-container {
     height: 600px;
     background-color: #e3e3e3;
@@ -77,71 +76,86 @@ nav {
     height: 550px;
     margin-right: 55px;
     padding: 0 80px;
-    border: 1px solid black;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+
 }
 .part1, .part2, .part3, .part4 {
     text-align: center;
-}
-
-.part4 {
-    align-self: flex-end;
+    
 }
 input {
+    border: none;
     cursor: text;
     height: 60px;
-    width: 100%;
 }
 .font-input {
+    cursor: pointer;
+    border: none;
     width: 218px;
-    height: 60px;
 }
 select {
     height: 60px;
 }
 .icon-img {
-    background-color: #fff;
     width: 39px;
     height: 38px;
 }
 .icon-btn {
     background-color: #fff;
     width: 60px;
-    height: 60px;
 }
 .share-btn {
     color: #fff;
     background-color: #ff7f00;
-    height: 60px;
     width: 120px;
 }
 .emojy-selector {
-    display: inline-block;
-    width: 373px;
+    cursor: pointer;
+    border: none;
     height: 135px;
 }
 
 
+.canvas-container {
+    width: 90vw;
+    height: 70vh;
+}
 #canvas {
     background-color: #fff;
     margin-left: 55px;
-}
-.canvas-container {
-    
-    width: 90vw;
-    height: 70vh;
 }
 
 
 .imgs-container {
     height: 932px;
+    padding: 25px 45px;
     background-color: #e3e3e3;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    
+}
+.img-item {
+    cursor: pointer;
+    text-align: center;
+    height: 278px;
+    width: 353px;
+    border: 1px solid black;
 }
 
 
+.color-input {
+    position: relative;
+}
+
+#user-color {
+    display: none;
+}
+
+/*-- footer-- */
 footer {
     color: #fff;
     background-color: #ff7f00;
@@ -151,7 +165,6 @@ footer {
     text-align: center;
     justify-content: center;
 }
-
 small {
     padding: 16px;;
 }
@@ -201,4 +214,16 @@ small {
 
 
 
-
+/* @media (max-width: 900px) {
+    .imgs-container {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+}
+@media (max-width: 650px) {
+    .imgs-container {
+        grid-template-columns: repeat(auto-fill, minmax(163px, 1fr));
+    }
+    .img-item {
+        height: 163px;
+    }
+} */
