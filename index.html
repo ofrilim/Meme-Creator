@@ -25,9 +25,11 @@
     <div class="first-page" style="display: block;">
         <nav>
             <section class="second-nav">
-                <div class="search-bar">
-                    <input type="text" placeholder="Enter search keyword"><img class="search-icon" src="ICONS/search-icon.png" alt=""></div>
-                <div class="words"></div>
+                <div class="second-nav-content">
+                    <div class="search-bar">
+                        <input type="text" placeholder="Enter search keyword"><img class="search-icon" src="ICONS/search-icon.png" alt=""></div>
+                    <div class="words">funny comics dogs drinks</div>
+                </div>
             </section>
         </nav>
 
@@ -38,38 +40,45 @@
     </div>
 
     <div class="second-page" style="display: none;">
-        <section class="editor-container">
+        <div class="editor-container">
             <div class="canvas-container">
-                <canvas id="canvas" width="550" height="550"></canvas>
+                <label for="user-text"><canvas id="canvas" width="560" height="550"></canvas></label>
             </div>
             <div class="editor-options">
                 <div class="part1">
                     <p><input type="text" name="" id="user-text" placeholder="   type text here"></p>
                     <p>
-                        <button class="icon-btn"><img class="icon-img" src="ICONS/up-and-down-opposite-double-arrows-side-by-side.png" alt=""></button>
+                        <button class="icon-btn" onclick="onMoveUpLine()"><img class="icon-img" src="ICONS/icons8-up-50.png"></button>
+                        <button class="icon-btn" onclick="onMoveDownLine()"><img class="icon-img" src="ICONS/icons8-down-arrow-50.png"></button>
+                        <button class="icon-btn" onclick="onToggleLines()"><img class="icon-img" src="ICONS/up-and-down-opposite-double-arrows-side-by-side.png" alt=""></button>
                         <button class="icon-btn"><img class="icon-img" src="ICONS/add.png" alt=""></button>
-                        <button class="icon-btn"><img class="icon-img" src="ICONS/trash.png" alt=""></button>
+                        <button class="icon-btn" onclick="onDeleteLine()"><img class="icon-img" src="ICONS/trash.png" alt=""></button>
                     </p>
                 </div>
                 <div class="part2">
                     <p>
-                        <button class="icon-btn"><img class="icon-img" src="ICONS/increase font - icon.png"/></button>
-                        <button class="icon-btn"><img class="icon-img" src="ICONS/decrease font - icon.png"></button>
-                        <button class="icon-btn"><img class="icon-img" src="ICONS/align-to-left.png"/></button>
-                        <button class="icon-btn"><img class="icon-img" src="ICONS/center-text-alignment.png"/></button>
-                        <button class="icon-btn"><img class="icon-img" src="ICONS/align-to-right.png"/></button>
-                    </p>
-                    <p><select class="font-input" name="" id="">
-                        <option value="Impact">font1</option>
-                        <option value="circle">font2</option>
-                        <option value="squere">font3</option>
-                        </select>
-                        <button class="icon-btn"><img class="icon-img" src="ICONS/text stroke.png"/></button>
-                        <button class="icon-btn"><input type="color" name="user-color" id="user-color" onchange="onGetColor()"><label for="user-color">
-                            <img class="icon-img" src="ICONS/paint-board-and-brush.png"/></label></button>
+                        <button class="icon-btn" onclick="onIncreaseSize()"><img class="icon-img" src="ICONS/increase font - icon.png"/></button>
+                        <button class="icon-btn" onclick="onDecreaseSize()"><img class="icon-img" src="ICONS/decrease font - icon.png"></button>
+                        <button class="icon-btn" onclick="onAlign('left')"><img class="icon-img" src="ICONS/align-to-left.png"/></button>
+                        <button class="icon-btn" onclick="onAlign('center')"><img class="icon-img" src="ICONS/center-text-alignment.png"/></button>
+                        <button class="icon-btn" onclick="onAlign('right')"><img class="icon-img" src="ICONS/align-to-right.png"/></button>
                     </p>
                 </div>
                 <div class="part3">
+                    <p><select class="font-input" name="" id="user-font" onchange="onChangeFont()">
+                        <option value="Impact">IMPACT</option>
+                        <option value="Times New Roman">Times New Roman</option>
+                        <option value="Verdana">Verdana</option>
+                        <option value="Cambria">Cambria</option>
+                        <option value="Comic Sans MS">Comic Sans MS</option>
+                        </select>
+                        <button class="icon-btn"><input type="color" name="user-stroke-color" id="user-stroke-color" onchange="onChangeStrokeColor()"><label for="user-stroke-color">
+                            <img class="icon-img" src="ICONS/text stroke.png"/></button></label></button>
+                        <button class="icon-btn"><input type="color" name="user-txt-color" id="user-txt-color" onchange="onChangeTxtColor()"><label for="user-txt-color">
+                            <img class="icon-img" src="ICONS/paint-board-and-brush.png"/></label></button>
+                    </p>
+                </div>
+                <div class="part4">
                     <p><select class="emojy-selector" name="" id="">
                         <option value="">emojy1</option>
                         <option value="">emojy2</option>
@@ -77,11 +86,11 @@
                     </select>
                     </p>
                 </div>
-                <div class="part4">
+                <div class="part5">
                     <p><button class="share-btn">Share</button></p>
                 </div>
             </div>
-        </section>
+        </div>
     </div>
     
     <footer>

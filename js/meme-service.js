@@ -9,11 +9,25 @@ var gMeme = {
     txts: [
         {
             line: '',
-            size: 20,
-            align: 'left',
-            color: 'red'
+            font: 'IMPACT',
+            size: 40,
+            align: 'center',
+            txtColor: 'black',
+            strokeColor: 'black',
+            y: 100,
+            x: 280
+        },
+        {
+            line: '',
+            font: 'IMPACT',
+            size: 40,
+            align: 'center',
+            txtColor: 'black',
+            strokeColor: 'black',
+            y: 480,
+            x: 280
         }
-    ] 
+    ]  
 }
 
 // get the gImgs objects array
