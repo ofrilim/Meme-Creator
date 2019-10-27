@@ -6,10 +6,11 @@ var gCtx = gCanvas.getContext('2d');
 function init() {
     createImgs();
     renderGallery();
+    caruselle();
 }
 
 function renderGallery() {
-    let imgs =  getImgs();   
+    let imgs = getImgs();
     let strHTML = imgs.map((img) => {
 
         return `<img class="img-item" data-id="${img.id}" onclick="onTogglePages(); onImgClicked(${img.id})" src="${img.url}"/>`
@@ -21,7 +22,7 @@ function onTogglePages() {
     let elfirstPage = document.querySelector('.first-page')
     let elSecondPage = document.querySelector('.second-page');
 
-    if (elfirstPage.style.display === "none"){
+    if (elfirstPage.style.display === "none") {
         elfirstPage.style.display = "block";
         elSecondPage.style.display = "none";
     } else {
@@ -33,29 +34,29 @@ function onTogglePages() {
 
 var elInputField = document.getElementById('user-text');
 
-elInputField.addEventListener('input', function() {
+elInputField.addEventListener('input', function () {
     let userInput = document.getElementById('user-text').value;
     gMeme.txts[gMeme.selectedTxtIdx].line = userInput;
 
     renderMeme();
 })
 
-function getImgElementById(id){
+function getImgElementById(id) {
     let elImgsArray = Array.from(document.querySelectorAll('.img-item'));
-    let elImg = elImgsArray.find((el) => el.getAttribute("data-id") == id);
+    let elImg = elImgsArray.find((el) => el.getAttribute("data-id") === id + '');
     return elImg;
 }
 
 // img clicked
-function onImgClicked(imgId) {       
+function onImgClicked(imgId) {
     gMeme.selectedImgId = imgId;
-    
-    getImgElementById(imgId)
+
+    // getImgElementById(imgId)
     renderMeme();
 }
 
 // render meme and txt to canvas
-function renderMeme() {    
+function renderMeme() {
     drawImgOnCanvas(getImgElementById(gMeme.selectedImgId));
 
     txtOnCanvas(gMeme.txts[0]);
@@ -69,7 +70,7 @@ function drawImgOnCanvas(img) {
 }
 
 function txtOnCanvas(txtObj) {
-    gCtx.font= `${txtObj.size}px ${txtObj.font}`;
+    gCtx.font = `${txtObj.size}px ${txtObj.font}`;
     gCtx.fillStyle = txtObj.txtColor;
     gCtx.textAlign = `${txtObj.align}`;
     gCtx.fillText(txtObj.line, txtObj.x, txtObj.y);
@@ -81,6 +82,7 @@ function txtOnCanvas(txtObj) {
 function onChangeTxtColor() {
     let elUserColor = document.getElementById('user-txt-color').value;
     gMeme.txts[gMeme.selectedTxtIdx].txtColor = `${elUserColor}`;
+    // changeTxtColor()
     renderMeme()
 }
 function onChangeStrokeColor() {
@@ -93,17 +95,17 @@ function onChangeStrokeColor() {
 function onChangeFont() {
     let elUserFont = document.querySelector('.font-input').value;
     gMeme.txts[gMeme.selectedTxtIdx].font = `${elUserFont}`;
-    renderMeme()    
+    renderMeme()
 }
 
 
 function onIncreaseSize() {
-    gMeme.txts[gMeme.selectedTxtIdx].size++;
-    renderMeme()    
+    gMeme.txts[gMeme.selectedTxtIdx].size += 2;
+    renderMeme()
 }
 function onDecreaseSize() {
-    gMeme.txts[gMeme.selectedTxtIdx].size--;
-    renderMeme()    
+    gMeme.txts[gMeme.selectedTxtIdx].size -= 2;
+    renderMeme()
 }
 
 
@@ -115,17 +117,17 @@ function onDeleteLine() {
 
 
 function onMoveUpLine() {
-    gMeme.txts[gMeme.selectedTxtIdx].y--;
+    gMeme.txts[gMeme.selectedTxtIdx].y -= 2;
     renderMeme()
 }
 function onMoveDownLine() {
-    gMeme.txts[gMeme.selectedTxtIdx].y++;
+    gMeme.txts[gMeme.selectedTxtIdx].y += 2;
     renderMeme()
 }
 
 
 function onToggleLines() {
-    switch(gMeme.selectedTxtIdx) {
+    switch (gMeme.selectedTxtIdx) {
         case 0:
             gMeme.selectedTxtIdx = 1;
             elInputField.value = gMeme.txts[1].line;
@@ -139,8 +141,8 @@ function onToggleLines() {
 
 function onAlign(alignTo) {
     let txtToAlign = gMeme.txts[gMeme.selectedTxtIdx]
-    switch(alignTo) {
-        case 'left': 
+    switch (alignTo) {
+        case 'left':
             txtToAlign.align = 'left';
             txtToAlign.x = 30;
             break;
@@ -157,3 +159,27 @@ function onAlign(alignTo) {
 }
 
 
+
+function downloadImg(elLink) {
+    var imgContent = canvas.toDataURL('image/jpeg');
+    elLink.href = imgContent
+}
+
+
+
+
+
+
+
+// get the x,y from clicking the canvas - print the clicked spot
+gCanvas.addEventListener('click', (ev) => {
+    var gX = ev.offsetX;
+    var gY = ev.offsetY;
+    console.log(gX, gY)
+    if (0 < gY && gY < 183) {
+        console.log('first line')
+    }
+    if (367 < gY && gY < 550) {
+        console.log('second line')
+    }
+})

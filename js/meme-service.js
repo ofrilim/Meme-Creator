@@ -12,7 +12,7 @@ var gMeme = {
             font: 'IMPACT',
             size: 40,
             align: 'center',
-            txtColor: 'black',
+            txtColor: 'white',
             strokeColor: 'black',
             y: 100,
             x: 280
@@ -22,7 +22,7 @@ var gMeme = {
             font: 'IMPACT',
             size: 40,
             align: 'center',
-            txtColor: 'black',
+            txtColor: 'white',
             strokeColor: 'black',
             y: 480,
             x: 280

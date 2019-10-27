@@ -27,7 +27,7 @@
             <section class="second-nav">
                 <div class="second-nav-content">
                     <div class="search-bar">
-                        <input type="text" placeholder="Enter search keyword"><img class="search-icon" src="ICONS/search-icon.png" alt=""></div>
+                        <input type="text" class="search-input" placeholder="Enter search keyword"><img class="search-icon" src="ICONS/search-icon.png" alt=""></div>
                     <div class="words">funny comics dogs drinks</div>
                 </div>
             </section>
@@ -46,26 +46,24 @@
             </div>
             <div class="editor-options">
                 <div class="part1">
-                    <p><input type="text" name="" id="user-text" placeholder="   type text here"></p>
-                    <p>
+                    <input type="text" name="" id="user-text" placeholder="   type text here">
+                    <div>
                         <button class="icon-btn" onclick="onMoveUpLine()"><img class="icon-img" src="ICONS/icons8-up-50.png"></button>
                         <button class="icon-btn" onclick="onMoveDownLine()"><img class="icon-img" src="ICONS/icons8-down-arrow-50.png"></button>
                         <button class="icon-btn" onclick="onToggleLines()"><img class="icon-img" src="ICONS/up-and-down-opposite-double-arrows-side-by-side.png" alt=""></button>
                         <button class="icon-btn"><img class="icon-img" src="ICONS/add.png" alt=""></button>
                         <button class="icon-btn" onclick="onDeleteLine()"><img class="icon-img" src="ICONS/trash.png" alt=""></button>
-                    </p>
+                    </div>
                 </div>
                 <div class="part2">
-                    <p>
-                        <button class="icon-btn" onclick="onIncreaseSize()"><img class="icon-img" src="ICONS/increase font - icon.png"/></button>
-                        <button class="icon-btn" onclick="onDecreaseSize()"><img class="icon-img" src="ICONS/decrease font - icon.png"></button>
-                        <button class="icon-btn" onclick="onAlign('left')"><img class="icon-img" src="ICONS/align-to-left.png"/></button>
-                        <button class="icon-btn" onclick="onAlign('center')"><img class="icon-img" src="ICONS/center-text-alignment.png"/></button>
-                        <button class="icon-btn" onclick="onAlign('right')"><img class="icon-img" src="ICONS/align-to-right.png"/></button>
-                    </p>
+                    <button class="icon-btn" onclick="onIncreaseSize()"><img class="icon-img" src="ICONS/increase font - icon.png"/></button>
+                    <button class="icon-btn" onclick="onDecreaseSize()"><img class="icon-img" src="ICONS/decrease font - icon.png"></button>
+                    <button class="icon-btn" onclick="onAlign('left')"><img class="icon-img" src="ICONS/align-to-left.png"/></button>
+                    <button class="icon-btn" onclick="onAlign('center')"><img class="icon-img" src="ICONS/center-text-alignment.png"/></button>
+                    <button class="icon-btn" onclick="onAlign('right')"><img class="icon-img" src="ICONS/align-to-right.png"/></button>
                 </div>
                 <div class="part3">
-                    <p><select class="font-input" name="" id="user-font" onchange="onChangeFont()">
+                    <select class="font-input" name="" id="user-font" onchange="onChangeFont()">
                         <option value="Impact">IMPACT</option>
                         <option value="Times New Roman">Times New Roman</option>
                         <option value="Verdana">Verdana</option>
@@ -76,18 +74,29 @@
                             <img class="icon-img" src="ICONS/text stroke.png"/></button></label></button>
                         <button class="icon-btn"><input type="color" name="user-txt-color" id="user-txt-color" onchange="onChangeTxtColor()"><label for="user-txt-color">
                             <img class="icon-img" src="ICONS/paint-board-and-brush.png"/></label></button>
-                    </p>
                 </div>
-                <div class="part4">
-                    <p><select class="emojy-selector" name="" id="">
-                        <option value="">emojy1</option>
-                        <option value="">emojy2</option>
-                        <option value="">emojy3</option>
-                    </select>
-                    </p>
+                <div class="emojies part4">
+                        <ul class="carousel">
+                          <li>
+                            <img src="emojies/layer-4.png" />
+                          </li>
+                          <li>
+                            <img src="emojies/layer-5.png" />
+                          </li>
+                          <li>
+                            <img src="emojies/layer-6.png" />
+                          </li>
+                        </ul>
                 </div>
                 <div class="part5">
-                    <p><button class="share-btn">Share</button></p>
+                    <form action="" method="POST" enctype="multipart/form-data" onsubmit="uploadImg(this, event)">
+                        <input name="img" id="imgData" type="hidden" />
+                        <div>
+                            <button class="share-btn btn" type="submit">Publish</button>
+                            <button class="share-btn share-container" style="display:none;"></button>
+                            <button class="share-btn"><a href="#" class="btn" onclick="downloadImg(this)" download="my-img.jpg">Download</a></button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -100,6 +109,7 @@
         <small>all rights reserved 2019</small>
     </footer>    
 
+    <script src="js/uploadFB-service.js"></script>
     <script src="js/meme-service.js"></script>
     <script src="js/main.js"></script>
 </body>
