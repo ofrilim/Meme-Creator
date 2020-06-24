@@ -1,19 +1,22 @@
-'use strict'
+'use strict';
 
-var gCanvas = document.getElementById('canvas');
-var gCtx = gCanvas.getContext('2d');
+const gCanvas = document.getElementById('canvas');
+let gCtx = gCanvas.getContext('2d');
 
 function init() {
     createImgs();
     renderGallery();
-    caruselle();
+    // caruselle();
 }
 
 function renderGallery() {
     let imgs = getImgs();
     let strHTML = imgs.map((img) => {
-
-        return `<img class="img-item" data-id="${img.id}" onclick="onTogglePages(); onImgClicked(${img.id})" src="${img.url}"/>`
+        return `<img class="img-item" 
+                    data-id="${img.id}" 
+                    onclick="onTogglePages(); 
+                    onImgClicked(${img.id})" 
+                    src="${img.url}"/>`
     })
     document.querySelector('.imgs-container').innerHTML = strHTML.join('');
 }
@@ -31,9 +34,7 @@ function onTogglePages() {
     }
 }
 
-
-var elInputField = document.getElementById('user-text');
-
+const elInputField = document.getElementById('user-text');
 elInputField.addEventListener('input', function () {
     let userInput = document.getElementById('user-text').value;
     gMeme.txts[gMeme.selectedTxtIdx].line = userInput;
@@ -91,7 +92,6 @@ function onChangeStrokeColor() {
     renderMeme()
 }
 
-
 function onChangeFont() {
     let elUserFont = document.querySelector('.font-input').value;
     gMeme.txts[gMeme.selectedTxtIdx].font = `${elUserFont}`;
@@ -115,7 +115,6 @@ function onDeleteLine() {
     renderMeme()
 }
 
-
 function onMoveUpLine() {
     gMeme.txts[gMeme.selectedTxtIdx].y -= 2;
     renderMeme()
@@ -124,7 +123,6 @@ function onMoveDownLine() {
     gMeme.txts[gMeme.selectedTxtIdx].y += 2;
     renderMeme()
 }
-
 
 function onToggleLines() {
     switch (gMeme.selectedTxtIdx) {
@@ -137,7 +135,6 @@ function onToggleLines() {
             elInputField.value = gMeme.txts[0].line;
     }
 }
-
 
 function onAlign(alignTo) {
     let txtToAlign = gMeme.txts[gMeme.selectedTxtIdx]
@@ -158,18 +155,10 @@ function onAlign(alignTo) {
     renderMeme();
 }
 
-
-
 function downloadImg(elLink) {
     var imgContent = canvas.toDataURL('image/jpeg');
     elLink.href = imgContent
 }
-
-
-
-
-
-
 
 // get the x,y from clicking the canvas - print the clicked spot
 gCanvas.addEventListener('click', (ev) => {

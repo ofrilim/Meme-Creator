@@ -12,7 +12,7 @@
     <nav>
         <section class="main-nav">
             <div class="logo">
-                <img src="Logo/layer-2.png" alt="Logo">
+                <img src="LOGO/LOGO.png" alt="Logo">
             </div>
             <div>
                 <ul class="right-side-nav">
@@ -46,34 +46,34 @@
             </div>
             <div class="editor-options">
                 <div class="part1">
-                    <input type="text" name="" id="user-text" placeholder="   type text here">
+                    <input type="text" name="" id="user-text" placeholder="Type text here">
                     <div>
-                        <button class="icon-btn" onclick="onMoveUpLine()"><img class="icon-img" src="ICONS/icons8-up-50.png"></button>
-                        <button class="icon-btn" onclick="onMoveDownLine()"><img class="icon-img" src="ICONS/icons8-down-arrow-50.png"></button>
-                        <button class="icon-btn" onclick="onToggleLines()"><img class="icon-img" src="ICONS/up-and-down-opposite-double-arrows-side-by-side.png" alt=""></button>
+                        <button class="icon-btn" onclick="onMoveUpLine()" title="Move up text"><img class="icon-img" src="ICONS/icons8-up-50.png"></button>
+                        <button class="icon-btn" onclick="onMoveDownLine()" title="Move down text"><img class="icon-img" src="ICONS/icons8-down-arrow-50.png"></button>
+                        <button class="icon-btn" onclick="onToggleLines()" title="Toggle lines"><img class="icon-img" src="ICONS/up-and-down-opposite-double-arrows-side-by-side.png" alt=""></button>
                         <button class="icon-btn"><img class="icon-img" src="ICONS/add.png" alt=""></button>
-                        <button class="icon-btn" onclick="onDeleteLine()"><img class="icon-img" src="ICONS/trash.png" alt=""></button>
+                        <button class="icon-btn" onclick="onDeleteLine()" title="Delete text"><img class="icon-img" src="ICONS/trash.png" alt=""></button>
                     </div>
                 </div>
                 <div class="part2">
-                    <button class="icon-btn" onclick="onIncreaseSize()"><img class="icon-img" src="ICONS/increase font - icon.png"/></button>
-                    <button class="icon-btn" onclick="onDecreaseSize()"><img class="icon-img" src="ICONS/decrease font - icon.png"></button>
-                    <button class="icon-btn" onclick="onAlign('left')"><img class="icon-img" src="ICONS/align-to-left.png"/></button>
-                    <button class="icon-btn" onclick="onAlign('center')"><img class="icon-img" src="ICONS/center-text-alignment.png"/></button>
-                    <button class="icon-btn" onclick="onAlign('right')"><img class="icon-img" src="ICONS/align-to-right.png"/></button>
+                    <button class="icon-btn" onclick="onIncreaseSize()" title="Increase font-size"><img class="icon-img" src="ICONS/increase font - icon.png"/></button>
+                    <button class="icon-btn" onclick="onDecreaseSize()" title="Decrease font-size"><img class="icon-img" src="ICONS/decrease font - icon.png"></button>
+                    <button class="icon-btn" onclick="onAlign('left')" title="Align left"><img class="icon-img" src="ICONS/align-to-left.png"/></button>
+                    <button class="icon-btn" onclick="onAlign('center')" title="Align center"><img class="icon-img" src="ICONS/center-text-alignment.png"/></button>
+                    <button class="icon-btn" onclick="onAlign('right')" title="Align right"><img class="icon-img" src="ICONS/align-to-right.png"/></button>
                 </div>
                 <div class="part3">
-                    <select class="font-input" name="" id="user-font" onchange="onChangeFont()">
+                    <select class="font-input" title="Font" id="user-font" onchange="onChangeFont()">
                         <option value="Impact">IMPACT</option>
                         <option value="Times New Roman">Times New Roman</option>
                         <option value="Verdana">Verdana</option>
                         <option value="Cambria">Cambria</option>
                         <option value="Comic Sans MS">Comic Sans MS</option>
-                        </select>
-                        <button class="icon-btn"><input type="color" name="user-stroke-color" id="user-stroke-color" onchange="onChangeStrokeColor()"><label for="user-stroke-color">
-                            <img class="icon-img" src="ICONS/text stroke.png"/></button></label></button>
-                        <button class="icon-btn"><input type="color" name="user-txt-color" id="user-txt-color" onchange="onChangeTxtColor()"><label for="user-txt-color">
-                            <img class="icon-img" src="ICONS/paint-board-and-brush.png"/></label></button>
+                    </select>
+                    <button class="icon-btn" title="Border color"><input type="color" name="user-stroke-color" id="user-stroke-color" onchange="onChangeStrokeColor()"><label for="user-stroke-color">
+                        <img class="icon-img" src="ICONS/text stroke.png"/></button></label></button>
+                    <button class="icon-btn" title="Text color"><input type="color" name="user-txt-color" id="user-txt-color" onchange="onChangeTxtColor()"><label for="user-txt-color">
+                        <img class="icon-img" src="ICONS/paint-board-and-brush.png"/></label></button>
                 </div>
                 <div class="emojies part4">
                         <ul class="carousel">

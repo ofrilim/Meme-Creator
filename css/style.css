@@ -1,21 +1,20 @@
 * {
     box-sizing: border-box;
 }
-
+/* html {
+    overflow-x: hidden;
+} */
 body, p {
     margin: 0;
+    padding: 0;
     font-family: 'Montserrat', sans-serif;
-    /* overflow: hidden; */
 }
-
 a {
     text-decoration: none;
     color: inherit;
 }
-
 ul {
     list-style: none;
-    padding: 0;
 }
 button {
     cursor: pointer;
@@ -23,15 +22,11 @@ button {
     padding: 0;
     height: 60px;
 }
-
-.right-side-nav {
-    list-style: none;
-    font-size: 19px;
-    display: flex;
-    justify-content: space-evenly;
-}
 nav {
     background-color: #ff7f00;
+}
+.logo img {
+    width: 200px;
 }
 .main-nav {
     color: white;
@@ -42,10 +37,16 @@ nav {
     align-items: center;
     justify-content: space-between;
 }
+.right-side-nav {
+    list-style: none;
+    font-size: 19px;
+    display: flex;
+    justify-content: space-evenly;
+}
 .nav-item {
     padding: 6px 15px;
 }
-.nav-item:hover , .nav-item:active{
+.nav-item:hover , .nav-item:active {
     color: #040a2c;
 }
 .nav-item:last-child {
@@ -63,7 +64,6 @@ nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
-
 }
 .search-icon {
     position: absolute;
@@ -80,13 +80,11 @@ nav {
 #canvas {
     background-color: #fff;
 }
-
 .editor-container {
     background-color: #e3e3e3;
     padding: 25px 60px;
     display: flex;
     justify-content: space-between;
-    
 }
 .editor-options * {
     font-size: 20px;
@@ -98,6 +96,7 @@ nav {
     justify-content: space-between;
 }
 .part1 input {
+    padding: 10px;
     border: none;
     cursor: text;
     height: 60px;
@@ -109,11 +108,16 @@ nav {
     display: flex;
     justify-content: space-between;
 }
+.font-input {
+    padding: 10px;
+    cursor: pointer;
+    border: none;
+    width: 218px;
+}
 .part5 div {
     display: flex;
     justify-content: space-between;
 }
-
 .editor-options {
     width: 560px;
     height: 550px;
@@ -123,19 +127,13 @@ nav {
     flex-direction: column;
     justify-content: space-between;
 }
-
-.font-input {
-    cursor: pointer;
-    border: none;
-    width: 218px;
-}
 select {
     height: 60px;
 }
 .icon-img {
     width: 39px;
     height: 38px;
-    margin: 0 auto;
+    margin: auto;
 }
 .icon-btn {
     background-color: #fff;
@@ -146,12 +144,10 @@ select {
     background-color: #ff7f00;
     width: 120px;
 }
-
 .carousel {
     margin: 0 auto;
     margin-top: 30px;
     display: flex;
-
 }
 .carousel img {
     cursor: pointer;
@@ -162,8 +158,6 @@ select {
     background-color: #fff;
     height: 135px;
 }
-
-
 .imgs-container {
     height: 1162px;
     padding: 25px 45px;
@@ -172,7 +166,6 @@ select {
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-around;
-    
 }
 .img-item {
     cursor: pointer;
@@ -180,12 +173,9 @@ select {
     height: 353px;
     width: 373px;
 }
-
-
 .color-input {
     position: relative;
 }
-
 #user-stroke-color, #user-txt-color {
     display: none;
 }
