@@ -1,65 +1,76 @@
 'use strict';
 
 const gCanvas = document.getElementById('canvas');
-let gCtx = gCanvas.getContext('2d');
+const gCtx = gCanvas.getContext('2d');
 
 function init() {
     createImgs();
     renderGallery();
-    // caruselle();
+    renderKeywords();
 }
 
 function renderGallery() {
-    let imgs = getImgs();
-    let strHTML = imgs.map((img) => {
+    const imgs = getImgs();
+    const strHTMLs = imgs.map((img) => {
         return `<img class="img-item" 
                     data-id="${img.id}" 
                     onclick="onTogglePages(); 
                     onImgClicked(${img.id})" 
                     src="${img.url}"/>`
     })
-    document.querySelector('.imgs-container').innerHTML = strHTML.join('');
+    document.querySelector('.imgs-container').innerHTML = strHTMLs.join('');
 }
 
 function onTogglePages() {
-    let elfirstPage = document.querySelector('.first-page')
-    let elSecondPage = document.querySelector('.second-page');
+    const elfirstPage = document.querySelector('.first-page');
+    const elSecondPage = document.querySelector('.second-page');
 
-    if (elfirstPage.style.display === "none") {
-        elfirstPage.style.display = "block";
-        elSecondPage.style.display = "none";
-    } else {
-        elfirstPage.style.display = "none";
-        elSecondPage.style.display = "block";
-    }
+    elfirstPage.style.display === "none" ? elfirstPage.style.display = "block" : elfirstPage.style.display = "none";
+    elSecondPage.style.display === "none" ? elSecondPage.style.display = "block" : elSecondPage.style.display = "none";
 }
 
 const elInputField = document.getElementById('user-text');
 elInputField.addEventListener('input', function () {
-    let userInput = document.getElementById('user-text').value;
+    const userInput = document.getElementById('user-text').value;
     gMeme.txts[gMeme.selectedTxtIdx].line = userInput;
-
     renderMeme();
 })
 
+function getKeywords() {
+    const imgs = getImgs();
+    const wordsArray = imgs.flatMap(img => img.keywords);
+
+    return wordsArray.reduce((counter, word) => {
+        counter[word] === undefined ? counter[word] = 1 : counter[word] += 1;
+        return counter;
+    }, {})
+}
+
+function renderKeywords() {
+    const keywords = getKeywords();
+    let strHTMLs = '';
+    for (let key in keywords) {
+        const fontSize = 10 + (keywords[key] * 5);
+        strHTMLs += `<span class="key-word" style="font-size:${fontSize}px;">${key}</span>`
+    }
+    document.querySelector('.key-words').innerHTML = strHTMLs;
+}
+
 function getImgElementById(id) {
-    let elImgsArray = Array.from(document.querySelectorAll('.img-item'));
-    let elImg = elImgsArray.find((el) => el.getAttribute("data-id") === id + '');
+    const elImgsArray = Array.from(document.querySelectorAll('.img-item'));
+    const elImg = elImgsArray.find((el) => el.getAttribute("data-id") === id + '');
     return elImg;
 }
 
-// img clicked
+// Img clicked
 function onImgClicked(imgId) {
     gMeme.selectedImgId = imgId;
-
-    // getImgElementById(imgId)
     renderMeme();
 }
 
-// render meme and txt to canvas
+// Render meme and txt to canvas
 function renderMeme() {
     drawImgOnCanvas(getImgElementById(gMeme.selectedImgId));
-
     txtOnCanvas(gMeme.txts[0]);
     txtOnCanvas(gMeme.txts[1]);
 }
@@ -81,20 +92,20 @@ function txtOnCanvas(txtObj) {
 
 
 function onChangeTxtColor() {
-    let elUserColor = document.getElementById('user-txt-color').value;
+    const elUserColor = document.getElementById('user-txt-color').value;
     gMeme.txts[gMeme.selectedTxtIdx].txtColor = `${elUserColor}`;
-    // changeTxtColor()
     renderMeme()
 }
 function onChangeStrokeColor() {
-    let elUserColor = document.getElementById('user-stroke-color').value;
+    const elUserColor = document.getElementById('user-stroke-color').value;
     gMeme.txts[gMeme.selectedTxtIdx].strokeColor = `${elUserColor}`;
     renderMeme()
 }
 
 function onChangeFont() {
-    let elUserFont = document.querySelector('.font-input').value;
+    const elUserFont = document.querySelector('.font-input').value;
     gMeme.txts[gMeme.selectedTxtIdx].font = `${elUserFont}`;
+
     renderMeme()
 }
 
@@ -137,7 +148,7 @@ function onToggleLines() {
 }
 
 function onAlign(alignTo) {
-    let txtToAlign = gMeme.txts[gMeme.selectedTxtIdx]
+    const txtToAlign = gMeme.txts[gMeme.selectedTxtIdx]
     switch (alignTo) {
         case 'left':
             txtToAlign.align = 'left';
@@ -156,14 +167,17 @@ function onAlign(alignTo) {
 }
 
 function downloadImg(elLink) {
-    var imgContent = canvas.toDataURL('image/jpeg');
+    const imgContent = canvas.toDataURL('image/jpeg');
     elLink.href = imgContent
 }
 
-// get the x,y from clicking the canvas - print the clicked spot
+
+
+// Helper function:
+// Get the x,y from clicking the canvas, print the clicked spot
 gCanvas.addEventListener('click', (ev) => {
-    var gX = ev.offsetX;
-    var gY = ev.offsetY;
+    const gX = ev.offsetX;
+    const gY = ev.offsetY;
     console.log(gX, gY)
     if (0 < gY && gY < 183) {
         console.log('first line')

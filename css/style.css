@@ -77,6 +77,18 @@ nav {
     cursor: text;
     position: relative;
 }
+.key-words {
+    height: 50px;
+    width: 50%;
+    display: flex;
+    align-items: baseline;
+    overflow: hidden;
+    flex-wrap: wrap;
+    overflow-y: scroll;
+}
+.key-word {
+    padding-left: 10px;
+}
 #canvas {
     background-color: #fff;
 }
@@ -159,7 +171,6 @@ select {
     height: 135px;
 }
 .imgs-container {
-    height: 1162px;
     padding: 25px 45px;
     background-color: #e3e3e3;
     display: flex;
@@ -168,6 +179,7 @@ select {
     justify-content: space-around;
 }
 .img-item {
+    padding-bottom: 20px;
     cursor: pointer;
     text-align: center;
     height: 353px;

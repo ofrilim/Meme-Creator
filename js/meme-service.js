@@ -1,9 +1,6 @@
-// 'use strict';
+'use strict';
 
-var gIdx = 1;
-var gImgs;
-
-var gMeme = {
+const gMeme = {
     selectedImgId: 1,
     selectedTxtIdx: 0,
     txts: [
@@ -30,27 +27,32 @@ var gMeme = {
     ]  
 }
 
-// get the gImgs objects array
+// Get the imgs objects array
 function getImgs() {
-    return gImgs;
+    return createImgs();
 }
 
-// create an array of objects containing: imgId, imgUrl, words
+// Create an array of objects containing: imgId, imgUrl, keywords
 function createImgs() {
-    gImgs = [
-        createImg(gIdx++, 'meme-imgs/2.jpg', ['happy', 'woman']),
-        createImg(gIdx++, 'meme-imgs/004.jpg', ['animal', 'dog']),
-        createImg(gIdx++, 'meme-imgs/005.jpg', ['dog', 'baby']),
-        createImg(gIdx++, 'meme-imgs/5.jpg', ['cool', 'winner']),
-        createImg(gIdx++, 'meme-imgs/006.jpg', ['cat', 'animal']),
-        createImg(gIdx++, 'meme-imgs/8.jpg', ['man', 'happy']),
-        createImg(gIdx++, 'meme-imgs/9.jpg', ['funny', 'boy']),
-        createImg(gIdx++, 'meme-imgs/12.jpg', ['man', 'you']),
-        createImg(gIdx++, 'meme-imgs/19.jpg', ['angry', 'man'])
+    let imgId = 101;
+
+    return [
+        createImg(imgId++, 'meme-imgs/002.jpg', ['happy', 'woman', 'view']),
+        createImg(imgId++, 'meme-imgs/003.jpg', ['funny', 'man', 'trump']),
+        createImg(imgId++, 'meme-imgs/004.jpg', ['dog', 'sweet', 'animal']),
+        createImg(imgId++, 'meme-imgs/005.jpg', ['boy', 'baby', 'win']),
+        createImg(imgId++, 'meme-imgs/006.jpg', ['cat', 'animal', 'sleep', 'sweet']),
+        createImg(imgId++, 'meme-imgs/007.jpg', ['baby', 'dog', 'sweet', 'sleep']),
+        createImg(imgId++, 'meme-imgs/008.jpg', ['man', 'clown', 'smile']),
+        createImg(imgId++, 'meme-imgs/009.jpg', ['boy', 'baby', 'funny', 'smile']),
+        createImg(imgId++, 'meme-imgs/010.jpg', ['smile', 'happy', 'boy']),
+        createImg(imgId++, 'meme-imgs/011.jpg', ['you', 'man']),
+        createImg(imgId++, 'meme-imgs/012.jpg', ['man', 'angry']),
+        createImg(imgId++, 'meme-imgs/013.jpg', ['man', 'kiss', 'sport']),
     ]
 }
 
-// create single img object
+// Create single img object
 function createImg(id, url, keywords) {
     return {
         id,
@@ -59,9 +61,7 @@ function createImg(id, url, keywords) {
     }
 }
 
-// get the img object by the id
+// Get the img object by the id
 function getImgById(id) {
     return gImgs.find((img) => img.id === id) 
 }
-
- 
