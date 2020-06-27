@@ -17,20 +17,23 @@
             </div>
             <div>
                 <ul class="right-side-nav">
-                    <li class="nav-item"><a href="" onclick="onTogglePages()">gallery</a></li>
-                    <li class="nav-item"><a href="">about</a></li>
+                    <li class="nav-item"><a onclick="onTogglePages('imgs-page')">gallery</a></li>
+                    <li class="nav-item"><a onclick="onTogglePages('saved-page')">saved</a></li>
                 </ul>
             </div>
         </section>
     </nav>
-    <div class="first-page" style="display: block;">
+    <div class="imgs-page" style="display: block;">
         <nav>
             <section class="second-nav">
                 <div class="second-nav-content">
                     <div class="search-bar">
-                        <input type="text" class="search-input" placeholder="Enter search keyword"><img class="search-icon" src="ICONS/search-icon.png" alt="">
+                        <input type="text" class="search-input" placeholder="Enter search keyword" oninput="onFilterImgs()"><img class="search-icon" src="ICONS/search-icon.png" alt="">
                     </div>
-                    <div class="key-words"></div>
+                    <div class="key-words-container">
+                        <div class="key-words"></div>
+                        <div><button class="more" onclick="getMoreKeywords()">more...</button></div>
+                    </div>
                 </div>
             </section>
         </nav>
@@ -38,7 +41,7 @@
         <div class="imgs-container"></div>
     </div>
 
-    <div class="second-page" style="display: none;">
+    <div class="editor-page" style="display: none;">
         <div class="editor-container">
             <div class="canvas-container">
                 <label for="user-text"><canvas id="canvas" width="560" height="550"></canvas></label>
@@ -101,6 +104,9 @@
         </div>
     </div>
     
+    <div class="saved-page">
+        <div>coool!!</div>
+    </div>
     <footer>
         <div class="logo">
                 <img src="Logo/layer-2.png" alt="Logo">

@@ -60,8 +60,3 @@ function createImg(id, url, keywords) {
         keywords
     }
 }
-
-// Get the img object by the id
-function getImgById(id) {
-    return gImgs.find((img) => img.id === id) 
-}

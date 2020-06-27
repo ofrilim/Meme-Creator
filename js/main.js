@@ -14,19 +14,20 @@ function renderGallery() {
     const strHTMLs = imgs.map((img) => {
         return `<img class="img-item" 
                     data-id="${img.id}" 
-                    onclick="onTogglePages(); 
+                    onclick="onTogglePages('editor-page'); 
                     onImgClicked(${img.id})" 
                     src="${img.url}"/>`
     })
     document.querySelector('.imgs-container').innerHTML = strHTMLs.join('');
 }
 
-function onTogglePages() {
-    const elfirstPage = document.querySelector('.first-page');
-    const elSecondPage = document.querySelector('.second-page');
+function onTogglePages(pageClass) {
+    const elImgsPage = document.querySelector('.imgs-page');
+    const elEditorPage = document.querySelector('.editor-page');
+    const elSavedPage = document.querySelector('.saved-page');
+    const elsHtmls = [elImgsPage, elEditorPage, elSavedPage]
 
-    elfirstPage.style.display === "none" ? elfirstPage.style.display = "block" : elfirstPage.style.display = "none";
-    elSecondPage.style.display === "none" ? elSecondPage.style.display = "block" : elSecondPage.style.display = "none";
+    elsHtmls.forEach(el => el.classList.value === pageClass ? el.style.display = 'block' : el.style.display = 'none')
 }
 
 const elInputField = document.getElementById('user-text');
@@ -36,6 +37,10 @@ elInputField.addEventListener('input', function () {
     renderMeme();
 })
 
+function onFilterImgs() {
+    console.log(document.querySelector('.search-input').value)
+    
+}
 function getKeywords() {
     const imgs = getImgs();
     const wordsArray = imgs.flatMap(img => img.keywords);
@@ -60,6 +65,13 @@ function getImgElementById(id) {
     const elImgsArray = Array.from(document.querySelectorAll('.img-item'));
     const elImg = elImgsArray.find((el) => el.getAttribute("data-id") === id + '');
     return elImg;
+}
+
+function getMoreKeywords() {
+    const elKeyword = document.querySelector('.key-words');
+    const elBtn = document.querySelector('.more');
+    elKeyword.style.flexWrap === "wrap" ? elKeyword.style.flexWrap = "nowrap" : elKeyword.style.flexWrap = "wrap";
+    elBtn.innerText === "less" ? elBtn.innerText = "more..." : elBtn.innerText = "less"; 
 }
 
 // Img clicked

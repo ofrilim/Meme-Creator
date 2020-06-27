@@ -16,7 +16,7 @@ a {
 ul {
     list-style: none;
 }
-button {
+.editor-options button {
     cursor: pointer;
     border: 0;
     padding: 0;
@@ -54,40 +54,52 @@ nav {
     padding-right: 0;
 }
 .second-nav {
-    height: 85px;
     background-color: #fff;
 }
 .second-nav-content {
     width: 1150px;
-    height: 85px;
     margin: 0 auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 .search-icon {
+    margin: 33px 0;
     position: absolute;
     width: 15px;
     height: 15px;
 }
 .search-input {
+    margin: 33px 0;
     border: none;
     width: 145px;
     border-bottom: 1px solid;
     cursor: text;
     position: relative;
 }
-.key-words {
-    height: 50px;
-    width: 50%;
+.key-words-container {
+    width: 60vw;
     display: flex;
-    align-items: baseline;
+    justify-content: space-between;
+    align-items: center;
+}
+.key-words {
+    width: 56vw;
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
     overflow: hidden;
-    flex-wrap: wrap;
-    overflow-y: scroll;
 }
 .key-word {
-    padding-left: 10px;
+    padding: 0 25px;
+}
+button.more {
+    cursor: pointer;
+    border: none;
+    bottom: 0;
+    background-color: white;
+    padding: 0;
+    border-bottom: 1px solid black;
 }
 #canvas {
     background-color: #fff;
