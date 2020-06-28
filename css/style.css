@@ -215,8 +215,10 @@ button.more {
     display: flex;
     justify-content: space-between;
 }
-.font-input {
+select {
     background-color: #fff;
+}
+.font-input {
     padding: 0.5em;
     cursor: pointer;
     border: none;
