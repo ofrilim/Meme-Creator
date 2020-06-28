@@ -61,7 +61,6 @@ function createImgs() {
         createImg(imgId++, 'meme-imgs/023.jpg', ['man', 'smile']),
         createImg(imgId++, 'meme-imgs/024.jpg', ['toys', 'smile']),
         createImg(imgId++, 'meme-imgs/025.jpg', ['man', 'smile']),
-        createImg(imgId++, 'meme-imgs/026.jpg', ['man']),
     ]
 }
 

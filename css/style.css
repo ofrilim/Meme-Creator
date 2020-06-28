@@ -1,9 +1,6 @@
 * {
     box-sizing: border-box;
 }
-/* html {
-    overflow-x: hidden;
-} */
 body, p {
     margin: 0;
     padding: 0;
@@ -211,10 +208,13 @@ footer {
     color: #fff;
     background-color: #ff7f00;
     height: 207px;
+    width: 100vw;
     display: flex;
     flex-direction: column;
     text-align: center;
     justify-content: center;
+    /* position: relative;
+    bottom: 0; */
 }
 small {
     padding: 16px;;
