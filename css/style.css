@@ -216,6 +216,7 @@ button.more {
     justify-content: space-between;
 }
 .font-input {
+    background-color: #fff;
     padding: 0.5em;
     cursor: pointer;
     border: none;
