@@ -16,7 +16,8 @@ function renderGallery(filteredImgs) {
                     data-id="${img.id}" 
                     onclick="onTogglePages('editor-page'); 
                     onImgClicked(${img.id})" 
-                    src="${img.url}"/>`
+                    src="${img.url}"
+                    title="key-words: ${img.keywords.join()}"/>`
     })
     document.querySelector('.imgs-container').innerHTML = strHTMLs.join('');
 }
@@ -40,13 +41,15 @@ elInputField.addEventListener('input', function () {
 
 function onFilterImgs() {
     let val = document.querySelector('.search-input').value
-    filterByKeyWord(val)  
+    filterByKeyWord(val, false)  
 }
 
-function filterByKeyWord(keyword) {
+function filterByKeyWord(keyword, bool) {
     const imgs = getImgs();
     if (keyword === '') renderGallery();
-    const filteredImgs = imgs.filter(img => img.keywords.join().includes(keyword))
+    let filteredImgs;
+    bool ? filteredImgs = imgs.filter(img => img.keywords.includes(keyword)) : 
+           filteredImgs = imgs.filter(img => img.keywords.join().includes(keyword));
     renderGallery(filteredImgs)
 }
 function getKeywords() {
@@ -64,7 +67,7 @@ function renderKeywords() {
     let strHTMLs = '';
     for (let key in keywords) {
         const fontSize = 10 + (keywords[key] * 4);
-        strHTMLs += `<span class="key-word" onclick="filterByKeyWord('${key}')" style="font-size:${fontSize}px;">${key}</span>`
+        strHTMLs += `<span class="key-word" onclick="filterByKeyWord('${key}', true)" style="font-size:${fontSize}px;">${key}</span>`
     }
     document.querySelector('.key-words').innerHTML = strHTMLs;
 }
@@ -79,7 +82,7 @@ function getMoreKeywords() {
     const elKeyword = document.querySelector('.key-words');
     const elBtn = document.querySelector('.more');
     elKeyword.style.flexWrap === "wrap" ? elKeyword.style.flexWrap = "nowrap" : elKeyword.style.flexWrap = "wrap";
-    elBtn.innerText === "less" ? elBtn.innerText = "more..." : elBtn.innerText = "less"; 
+    elBtn.innerText === "...less" ? elBtn.innerText = "more..." : elBtn.innerText = "...less"; 
 }
 
 // Img clicked
