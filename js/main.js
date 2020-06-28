@@ -9,8 +9,8 @@ function init() {
     renderKeywords();
 }
 
-function renderGallery() {
-    const imgs = getImgs();
+function renderGallery(filteredImgs) {
+    const imgs = filteredImgs || getImgs();
     const strHTMLs = imgs.map((img) => {
         return `<img class="img-item" 
                     data-id="${img.id}" 
@@ -28,6 +28,7 @@ function onTogglePages(pageClass) {
     const elsHtmls = [elImgsPage, elEditorPage, elSavedPage]
 
     elsHtmls.forEach(el => el.classList.value === pageClass ? el.style.display = 'block' : el.style.display = 'none')
+    if (elImgsPage.style.display === 'block') renderGallery();
 }
 
 const elInputField = document.getElementById('user-text');
@@ -38,8 +39,15 @@ elInputField.addEventListener('input', function () {
 })
 
 function onFilterImgs() {
-    console.log(document.querySelector('.search-input').value)
-    
+    let val = document.querySelector('.search-input').value
+    filterByKeyWord(val)  
+}
+
+function filterByKeyWord(keyword) {
+    const imgs = getImgs();
+    if (keyword === '') renderGallery();
+    const filteredImgs = imgs.filter(img => img.keywords.join().includes(keyword))
+    renderGallery(filteredImgs)
 }
 function getKeywords() {
     const imgs = getImgs();
@@ -55,8 +63,8 @@ function renderKeywords() {
     const keywords = getKeywords();
     let strHTMLs = '';
     for (let key in keywords) {
-        const fontSize = 10 + (keywords[key] * 5);
-        strHTMLs += `<span class="key-word" style="font-size:${fontSize}px;">${key}</span>`
+        const fontSize = 10 + (keywords[key] * 4);
+        strHTMLs += `<span class="key-word" onclick="filterByKeyWord('${key}')" style="font-size:${fontSize}px;">${key}</span>`
     }
     document.querySelector('.key-words').innerHTML = strHTMLs;
 }
