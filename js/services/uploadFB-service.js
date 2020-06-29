@@ -1,6 +1,6 @@
 
 // on submit call to this function
-function uploadImg(elForm, ev) {
+function onUploadImg(elForm, ev) {
     ev.preventDefault();
 
     document.getElementById('imgData').value = canvas.toDataURL("image/jpeg");

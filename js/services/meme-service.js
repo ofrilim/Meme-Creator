@@ -6,6 +6,7 @@ const gMeme = {
     txts: [
         {
             line: '',
+            backGroundColor: 'red',
             font: 'IMPACT',
             size: 40,
             align: 'center',

@@ -13,7 +13,7 @@ body {
 }
 .imgs-page, .editor-page, .saved-page {
     display: none;
-    padding-bottom: 12.9375em; 
+    padding-bottom: 11em; 
 }
 a {
     text-decoration: none;
@@ -162,6 +162,24 @@ button.more {
     height: 60vh;
     width: 29.3vw;
 }
+.upload-icon {
+    width: 3em;
+    cursor: pointer;
+}
+.upload-btn {
+    cursor: pointer;
+    border: none;
+    border-radius: 50%;
+    background-color: #ff7f00;
+    position: fixed;
+    bottom: 1.7em;
+    right: 4em;
+    height: 4.5em;
+    width: 4.5em;
+}
+#file-input {
+    position: fixed;
+}
 
 @media (max-width: 650px) {
     .imgs-container {
@@ -292,7 +310,7 @@ select {
 footer {
     color: #fff;
     background-color: #ff7f00;
-    height: 12.9375em;
+    height: 11em;
     width: 100vw;
     display: flex;
     flex-direction: column;

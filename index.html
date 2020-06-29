@@ -39,12 +39,14 @@
         </nav>
 
         <div class="imgs-container"></div>
+        <button class="upload-btn"><label for="file-input"><img class="upload-icon" src="ICONS/image-upload.png" title="Upload Image"/></label></button>
+        <input id="file-input" type="file" name="image" accept="image/png, image/jpeg" onchange="onImgUpload(event)"/>
     </div>
 
     <div class="editor-page">
         <div class="editor-container">
             <div class="canvas-container">
-                <label for="user-text"><canvas id="canvas" width="560" height="550"></canvas></label>
+                <label for="user-text"><canvas id="canvas" width="560" height="550" tabindex="1"></canvas></label>
             </div>
             <div class="editor-options">
                 <div class="part1">
@@ -58,8 +60,8 @@
                     </div>
                 </div>
                 <div class="part2">
-                    <button class="icon-btn" onclick="onIncreaseSize()" title="Increase font-size"><img class="icon-img" src="ICONS/increase font - icon.png"/></button>
-                    <button class="icon-btn" onclick="onDecreaseSize()" title="Decrease font-size"><img class="icon-img" src="ICONS/decrease font - icon.png"></button>
+                    <button class="icon-btn" onclick="onIncreaseSize()" title="Increase font-size"><img class="icon-img" src="ICONS/increase-font-icon.png"/></button>
+                    <button class="icon-btn" onclick="onDecreaseSize()" title="Decrease font-size"><img class="icon-img" src="ICONS/decrease-font-icon.png"></button>
                     <button class="icon-btn" onclick="onAlign('left')" title="Align left"><img class="icon-img" src="ICONS/align-to-left.png"/></button>
                     <button class="icon-btn" onclick="onAlign('center')" title="Align center"><img class="icon-img" src="ICONS/center-text-alignment.png"/></button>
                     <button class="icon-btn" onclick="onAlign('right')" title="Align right"><img class="icon-img" src="ICONS/align-to-right.png"/></button>
@@ -73,7 +75,7 @@
                         <option value="Comic Sans MS">Comic Sans MS</option>
                     </select>
                     <button class="icon-btn" title="Border color"><input type="color" name="user-stroke-color" id="user-stroke-color" onchange="onChangeStrokeColor()"><label for="user-stroke-color">
-                        <img class="icon-img" src="ICONS/text stroke.png"/></button></label></button>
+                        <img class="icon-img" src="ICONS/text-stroke.png"/></button></label></button>
                     <button class="icon-btn" title="Text color"><input type="color" name="user-txt-color" id="user-txt-color" onchange="onChangeTxtColor()"><label for="user-txt-color">
                         <img class="icon-img" src="ICONS/paint-board-and-brush.png"/></label></button>
                 </div>
@@ -91,12 +93,12 @@
                         </ul>
                 </div>
                 <div class="part5">
-                    <form action="" method="POST" enctype="multipart/form-data" onsubmit="uploadImg(this, event)">
+                    <form action="" method="POST" enctype="multipart/form-data" onsubmit="onUploadImg(this, event)">
                         <input name="img" id="imgData" type="hidden" />
                         <div>
                             <button class="share-btn btn" type="submit">Publish</button>
                             <button class="share-btn share-container" style="display:none;"></button>
-                            <button class="share-btn"><a href="#" class="btn" onclick="downloadImg(this)" download="my-img.jpg">Download</a></button>
+                            <button class="share-btn"><a href="#" class="btn" onclick="onDownloadImg(this)" download="my-img.jpg">Download</a></button>
                         </div>
                     </form>
                 </div>
@@ -114,8 +116,9 @@
         <small>Limor Ofri 2019</small>
     </footer>    
 
-    <script src="js/uploadFB-service.js"></script>
-    <script src="js/meme-service.js"></script>
+    <script src="js/services/uploadFB-service.js"></script>
+    <script src="js/services/uploadDownloadImage-service.js"></script>
+    <script src="js/services/meme-service.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>

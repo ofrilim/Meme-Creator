@@ -9,8 +9,8 @@ function init() {
     renderKeywords();
 }
 
-function renderGallery(filteredImgs) {
-    const imgs = filteredImgs || getImgs();
+async function renderGallery(filteredImgs) {
+    const imgs = filteredImgs || await getImgs();
     const strHTMLs = imgs.map((img) => {
         return `<img class="img-item" 
                     data-id="${img.id}" 
@@ -30,6 +30,7 @@ function onTogglePages(pageClass) {
 
     elsHtmls.forEach(el => el.classList.value === pageClass ? el.style.display = 'block' : el.style.display = 'none')
     if (elImgsPage.style.display === 'block') renderGallery();
+    if (elEditorPage.style.display === 'block') document.getElementById('user-text').focus();
 }
 
 const elInputField = document.getElementById('user-text');
@@ -44,16 +45,19 @@ function onFilterImgs() {
     filterByKeyWord(val, false)  
 }
 
-function filterByKeyWord(keyword, bool) {
-    const imgs = getImgs();
+// A function get boolean as seconde parameter. 
+// false - filter all the results that has the string in the keyword, true - filter for match whole string
+async function filterByKeyWord(keyword, bool) {
+    const imgs = await getImgs();
     if (keyword === '') renderGallery();
     let filteredImgs;
-    bool ? filteredImgs = imgs.filter(img => img.keywords.includes(keyword)) : 
-           filteredImgs = imgs.filter(img => img.keywords.join().includes(keyword));
+    bool ? filteredImgs = imgs.filter(img => img.keywords.includes(keyword.toLowerCase())) : 
+           filteredImgs = imgs.filter(img => img.keywords.join().includes(keyword.toLowerCase()));
     renderGallery(filteredImgs)
 }
-function getKeywords() {
-    const imgs = getImgs();
+
+async function getKeywords() {
+    const imgs = await getImgs();
     const wordsArray = imgs.flatMap(img => img.keywords);
 
     return wordsArray.reduce((counter, word) => {
@@ -62,20 +66,14 @@ function getKeywords() {
     }, {})
 }
 
-function renderKeywords() {
-    const keywords = getKeywords();
+async function renderKeywords() {
+    const keywords = await getKeywords();
     let strHTMLs = '';
     for (let key in keywords) {
         const fontSize = 10 + (keywords[key] * 4);
         strHTMLs += `<span class="key-word" onclick="filterByKeyWord('${key}', true)" style="font-size:${fontSize}px;">${key}</span>`
     }
     document.querySelector('.key-words').innerHTML = strHTMLs;
-}
-
-function getImgElementById(id) {
-    const elImgsArray = Array.from(document.querySelectorAll('.img-item'));
-    const elImg = elImgsArray.find((el) => el.getAttribute("data-id") === id + '');
-    return elImg;
 }
 
 function getMoreKeywords() {
@@ -99,9 +97,17 @@ function renderMeme() {
 }
 
 function drawImgOnCanvas(img) {
+    // console.log('image to draw is: ', img)
     img.width = gCanvas.width;
     img.height = gCanvas.height;
     gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height)
+}
+
+function getImgElementById(id) {
+    const elImgsArray = Array.from(document.querySelectorAll('.img-item'));
+    const elImg = elImgsArray.find((el) => el.getAttribute("data-id") === id + '');
+    // console.log('img look like: ', elImg)
+    return elImg;
 }
 
 function txtOnCanvas(txtObj) {
@@ -112,7 +118,6 @@ function txtOnCanvas(txtObj) {
     gCtx.strokeStyle = `${txtObj.strokeColor}`;
     gCtx.strokeText(txtObj.line, txtObj.x, txtObj.y)
 }
-
 
 function onChangeTxtColor() {
     const elUserColor = document.getElementById('user-txt-color').value;
@@ -188,13 +193,6 @@ function onAlign(alignTo) {
     }
     renderMeme();
 }
-
-function downloadImg(elLink) {
-    const imgContent = canvas.toDataURL('image/jpeg');
-    elLink.href = imgContent
-}
-
-
 
 // Helper function:
 // Get the x,y from clicking the canvas, print the clicked spot
