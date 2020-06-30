@@ -1,8 +1,5 @@
 'use strict';
 
-const gCanvas = document.getElementById('canvas');
-const gCtx = gCanvas.getContext('2d');
-
 function init() {
     createImgs();
     renderGallery();
@@ -41,7 +38,7 @@ elInputField.addEventListener('input', function () {
 })
 
 function onFilterImgs() {
-    let val = document.querySelector('.search-input').value
+    const val = document.querySelector('.search-input').value
     filterByKeyWord(val, false)  
 }
 
@@ -76,7 +73,7 @@ async function renderKeywords() {
     document.querySelector('.key-words').innerHTML = strHTMLs;
 }
 
-function getMoreKeywords() {
+function onGetMoreKeywords() {
     const elKeyword = document.querySelector('.key-words');
     const elBtn = document.querySelector('.more');
     elKeyword.style.flexWrap === "wrap" ? elKeyword.style.flexWrap = "nowrap" : elKeyword.style.flexWrap = "wrap";
@@ -85,125 +82,53 @@ function getMoreKeywords() {
 
 // Img clicked
 function onImgClicked(imgId) {
-    gMeme.selectedImgId = imgId;
-    renderMeme();
-}
-
-// Render meme and txt to canvas
-function renderMeme() {
-    drawImgOnCanvas(getImgElementById(gMeme.selectedImgId));
-    txtOnCanvas(gMeme.txts[0]);
-    txtOnCanvas(gMeme.txts[1]);
-}
-
-function drawImgOnCanvas(img) {
-    // console.log('image to draw is: ', img)
-    img.width = gCanvas.width;
-    img.height = gCanvas.height;
-    gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height)
-}
-
-function getImgElementById(id) {
-    const elImgsArray = Array.from(document.querySelectorAll('.img-item'));
-    const elImg = elImgsArray.find((el) => el.getAttribute("data-id") === id + '');
-    // console.log('img look like: ', elImg)
-    return elImg;
-}
-
-function txtOnCanvas(txtObj) {
-    gCtx.font = `${txtObj.size}px ${txtObj.font}`;
-    gCtx.fillStyle = txtObj.txtColor;
-    gCtx.textAlign = `${txtObj.align}`;
-    gCtx.fillText(txtObj.line, txtObj.x, txtObj.y);
-    gCtx.strokeStyle = `${txtObj.strokeColor}`;
-    gCtx.strokeText(txtObj.line, txtObj.x, txtObj.y)
+    imgClicked(imgId);
+    renderMeme()
 }
 
 function onChangeTxtColor() {
-    const elUserColor = document.getElementById('user-txt-color').value;
-    gMeme.txts[gMeme.selectedTxtIdx].txtColor = `${elUserColor}`;
+    changeTxtColor();
     renderMeme()
 }
 function onChangeStrokeColor() {
-    const elUserColor = document.getElementById('user-stroke-color').value;
-    gMeme.txts[gMeme.selectedTxtIdx].strokeColor = `${elUserColor}`;
+    changeStrokeColor();
     renderMeme()
 }
 
 function onChangeFont() {
-    const elUserFont = document.querySelector('.font-input').value;
-    gMeme.txts[gMeme.selectedTxtIdx].font = `${elUserFont}`;
-
+    changeFont();
     renderMeme()
 }
-
-
 function onIncreaseSize() {
-    gMeme.txts[gMeme.selectedTxtIdx].size += 2;
+    increaseSize();
     renderMeme()
 }
 function onDecreaseSize() {
-    gMeme.txts[gMeme.selectedTxtIdx].size -= 2;
+    decreaseSize();
     renderMeme()
 }
 
 
 function onDeleteLine() {
-    gMeme.txts[gMeme.selectedTxtIdx].line = '';
-    elInputField.value = '';
+    deleteLine();
     renderMeme()
 }
 
 function onMoveUpLine() {
-    gMeme.txts[gMeme.selectedTxtIdx].y -= 2;
+    moveUpLine();
     renderMeme()
 }
+
 function onMoveDownLine() {
-    gMeme.txts[gMeme.selectedTxtIdx].y += 2;
+    moveDownLine();
     renderMeme()
 }
 
 function onToggleLines() {
-    switch (gMeme.selectedTxtIdx) {
-        case 0:
-            gMeme.selectedTxtIdx = 1;
-            elInputField.value = gMeme.txts[1].line;
-            break;
-        case 1:
-            gMeme.selectedTxtIdx = 0;
-            elInputField.value = gMeme.txts[0].line;
-    }
+    toggleLines();
 }
 
 function onAlign(alignTo) {
-    const txtToAlign = gMeme.txts[gMeme.selectedTxtIdx]
-    switch (alignTo) {
-        case 'left':
-            txtToAlign.align = 'left';
-            txtToAlign.x = 30;
-            break;
-        case 'center':
-            txtToAlign.align = 'center';
-            txtToAlign.x = 280;
-            break;
-        case 'right':
-            txtToAlign.align = 'right';
-            txtToAlign.x = 520;
-            break;
-    }
-    renderMeme();
+    align(alignTo);
+    renderMeme()
 }
-
-// Helper function:
-// Get the x,y from clicking the canvas, print the clicked spot
-gCanvas.addEventListener('click', (ev) => {
-    const gX = ev.offsetX;
-    const gY = ev.offsetY;
-    console.log(gX, gY)
-    if (0 < gY && gY < 183) {
-        console.log('first line')
-    }
-    if (367 < gY && gY < 550) {
-        console.log('second line')
-    }
-})

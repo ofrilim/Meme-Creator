@@ -1,5 +1,6 @@
 'use strict';
 
+let elUsersImage;
 // Handle download image to the users device
 function onDownloadImg(elLink) {
     const imgContent = canvas.toDataURL('image/jpeg');
@@ -19,16 +20,15 @@ function loadImage(ev, onImageReady) {
         let img = new Image();
         img.onload = onImageReady.bind(null, img)
         img.src = event.target.result;
-        img.id = 12345;
+        img.id = 1234567;
     }
     reader.readAsDataURL(ev.target.files[0]);
 }
 
 function handleImage(img) {
     gMeme.selectedImgId = img.id;
+    elUsersImage = img;
 
-    drawImgOnCanvas(img);
-    txtOnCanvas(gMeme.txts[0]);
-    txtOnCanvas(gMeme.txts[1]);
+    renderMeme()
     onTogglePages('editor-page');
 }
